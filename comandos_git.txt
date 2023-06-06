@@ -1,0 +1,20 @@
+-setup
+	git init
+	dotnet new gitignore
+
+-versionando
+	git add NomeDoArquivo, se botar um . pega tudo
+	git status
+	git commit -m "nome da atualizacao"
+	git log
+
+-controle remoto
+	git remote add origin urldoprojeto	
+	git remote show
+	git push -u "nome da atualizacao" master
+	git clone urldoprojeto	
+
+-trabalho em equipe
+	git pull
+	git branch
+	git checkout -b nomedanovabranch
