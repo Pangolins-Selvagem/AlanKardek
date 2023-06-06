@@ -1,0 +1,41 @@
+CREATE TABLE [dbo].[tb_usuario]
+(
+	[id_registro] INT IDENTITY (1, 1) NOT NULL,
+	[nm_usuario]  VARCHAR(100) NOT NULL,
+	[tx_email]    VARCHAR(100) NOT NULL,
+	[tx_senha]    VARCHAR(10) NOT NULL,
+	[tp_usuario]  VARCHAR(1) NOT NULL,
+	[in_privilegiado] VARCHAR(1) NOT NULL,
+	CONSTRAINT [pk_usuario] PRIMARY KEY (id_registro)
+);
+GO
+ALTER TABLE [dbo].[tb_usuario] ADD CONSTRAINT [un_usuario1] UNIQUE (nm_usuario);
+ALTER TABLE [dbo].[tb_usuario] ADD CONSTRAINT [un_usuario2] UNIQUE (tx_email);
+ALTER TABLE [dbo].[tb_usuario] ADD CONSTRAINT [ck_usuario1] CHECK (tp_usuario IN ('A', 'U'));
+ALTER TABLE [dbo].[tb_usuario] ADD CONSTRAINT [ck_usuario2] CHECK (in_privilegiado IN ('S', 'N'));
+GO
+CREATE TRIGGER TRG_TB_USUARIO ON [dbo].[tb_usuario] FOR INSERT, UPDATE, DELETE
+AS
+BEGIN
+	DECLARE @NM_USUARIO  VARCHAR(100),
+	        @TX_EMAIL    VARCHAR(100),
+			@TX_SENHA    VARCHAR(10),
+			@TP_USUARIO  VARCHAR(1),
+			@IN_PRIVILEGIADO VARCHAR(1);
+	--
+	SELECT 
+	@NM_USUARIO = NM_USUARIO,
+	@TX_EMAIL = LOWER(TX_EMAIL),
+	@TX_SENHA = TX_SENHA,
+	@TP_USUARIO = TP_USUARIO,
+	@IN_PRIVILEGIADO = IN_PRIVILEGIADO
+	FROM INSERTED;
+	--
+	IF (@TP_USUARIO = 'A') SELECT @IN_PRIVILEGIADO = 'N';
+	--
+	INSERT INTO tb_usuario (NM_USUARIO, TX_EMAIL, TX_SENHA, TP_USUARIO, IN_PRIVILEGIADO)
+	VALUES (@NM_USUARIO, @TX_EMAIL, @TX_SENHA, @TP_USUARIO, @IN_PRIVILEGIADO);
+	--
+	COMMIT;
+END;
+GO

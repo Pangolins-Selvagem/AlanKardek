@@ -1,0 +1,11 @@
+﻿@page
+@model AlanKardek.Pages.HomeModel
+@{
+    Layout = null;
+}
+@if (Model.Usuario != null) {
+    <h1>Bem vindo @Model.Usuario.Nome</h1>
+}
+else {
+    <h1>@Model.mensagem</h1>
+}

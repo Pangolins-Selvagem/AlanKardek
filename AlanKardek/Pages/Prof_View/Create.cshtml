@@ -1,0 +1,153 @@
+﻿@page
+@model AlanKardek.Pages.Prof_View.CreateModel
+
+@{
+    ViewData["Title"] = "Criar";
+    Layout = null;
+}
+<DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrar</title>
+    <link rel="stylesheet" href="~/AlanKardek.styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css%22%3E" />
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+<h1>Criar</h1>
+
+<h4>Curso</h4>
+<hr />
+<div class="row gx-5">
+        <div class="col-lg-4 mb-5">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group field nome">
+                <label asp-for="Curso.Nome" class="control-label"></label>
+                <input asp-for="Curso.Nome" class="form-control" onkeyup="nome()" />
+                <span asp-validation-for="Curso.Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group field materia">
+                <label asp-for="Curso.Materia" class="control-label"></label>
+                <input asp-for="Curso.Materia" class="form-control" onkeyup="mat()" />
+                <span asp-validation-for="Curso.Materia" class="text-danger"></span>
+            </div>
+            <div class="form-group field descricao">
+                <label asp-for="Curso.Descricao" class="control-label"></label>
+                <input asp-for="Curso.Descricao" class="form-control" onkeyup="desc()"/>
+                <span asp-validation-for="Curso.Descricao" class="text-danger"></span>
+            </div>
+            <div class="form-group field proprietario">
+                <label asp-for="Curso.Proprietario" class="control-label"></label>
+                <input asp-for="Curso.Proprietario" class="form-control" onkeyup="prop()"/>
+                <span asp-validation-for="Curso.Proprietario" class="text-danger"></span>
+            </div>
+            <div class="form-group field date">
+                <label asp-for="Curso.DataInicio" class="control-label"></label>
+                <input asp-for="Curso.DataInicio" oninput="this.value = this.value.replace(/[^0-9/]/g, '').replace(/(\..?)\../g, '$1');" class="form-control" maxlength="10" onkeyup="date()" />
+                <span asp-validation-for="Curso.DataInicio" class="text-danger"></span>
+            </div>
+            <div class="form-group field turma">
+                <label asp-for="Curso.Turma" class="control-label"></label>
+                <input asp-for="Curso.Turma" class="form-control" onkeyup="turma()" maxlength="3"/>
+                <span asp-validation-for="Curso.Turma" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input style="margin-top:10px" type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+        <div class="col-lg-4 mb-5">
+            <div class="card h-100 shadow border-0">
+                <img class="card-img-top" src="https://dummyimage.com/600x350/ced4da/6c757d" alt="..." />
+                <div class="card-body p-4">
+                    <div class="badge bg-primary bg-gradient rounded-pill mb-4" id="materia">Materia</div>
+                        <div class="badge bg-primary bg-gradient rounded-pill mb-2" id="turma">Turma</div>
+                    <a class="text-decoration-none link-dark stretched-link" href="#!">
+                        <h5 class="card-title mb-3" id="name">Curso</h5>
+                    </a>
+                    <p class="card-text mb-0" id="descricao">
+                        Descriççao
+                    </p>
+                </div>
+                <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
+                    <div class="d-flex align-items-end justify-content-between">
+                        <div class="d-flex align-items-center">
+                            <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d"
+                                 alt="..." />
+                            <div class="small">
+                                <div class="fw-bold" id="proprietario">Professor</div>
+                                <div class="text-muted" id="date">March 12, 2022</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+        <script>
+            const form = document.querySelector("form");
+            nField = form.querySelector(".nome");
+            nInput = nField.querySelector("input");
+            mField = form.querySelector(".materia");
+            mInput = mField.querySelector("input");
+            dField = form.querySelector(".descricao");
+            dInput = dField.querySelector("input");
+            pField = form.querySelector(".proprietario");
+            pInput = pField.querySelector("input");
+            dtField = form.querySelector(".date");
+            dtInput = dtField.querySelector("input");
+            tField = form.querySelector(".turma");
+            tInput = tField.querySelector("input");
+
+           
+
+            function nome() {
+                document.getElementById("name").innerHTML = nInput.value;
+            }
+            function mat() {
+                document.getElementById("materia").innerHTML = mInput.value;
+            }
+            function desc() {
+                document.getElementById("descricao").innerHTML = dInput.value;
+            }
+            function prop() {
+                document.getElementById("proprietario").innerHTML = pInput.value;
+            }
+
+            function date() {
+
+
+                document.getElementById("date").innerHTML = dtInput.value;
+
+                let dt = dtInput.value.length
+                if (dt === 2 || dt === 5) {
+                    dtInput.value += '/'
+                }
+            }
+            function turma() {
+                document.getElementById("turma").innerHTML = tInput.value;
+            }
+        </script>
+</body>
+</html>
+

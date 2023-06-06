@@ -1,0 +1,10 @@
+CREATE TABLE [dbo].[dbo.tb_usuario] (
+    [Id]              INT            IDENTITY (1, 1) NOT NULL,
+    [nm_usuario]      NVARCHAR (100) NOT NULL,
+    [tx_email]        NVARCHAR (100) NOT NULL,
+    [tx_senha]        NVARCHAR (10)  NOT NULL,
+    [tp_usuario]      NVARCHAR (1)   NOT NULL,
+    [in_privilegiado] NVARCHAR (1)   NOT NULL,
+    CONSTRAINT [PK_dbo.tb_usuario] PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
