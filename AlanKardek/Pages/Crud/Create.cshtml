@@ -103,7 +103,25 @@
         pInput = pField.querySelector("input");
 
 
+        function tipo(){
+            if(tiInput.value == "U" || tiInput.value == "P"){
+                pInput.value = "N";
+                pInput.disabled = true;
+                let tu = tuInput.value.length
+                if (tu === 0 || tu === 1) {
+                    tuInput.value += 'T'
+                }
+            }
 
+            if (tiInput.value == "A" || tiInput.value == "P"){
+                tuInput.value = 0;
+                tuField.hidden = true;
+                tuInput.disabled = true;
+            } else {
+                tuField.hidden = false;
+                tuInput.disabled = false;
+            }
+        }
 
 
 </script>
