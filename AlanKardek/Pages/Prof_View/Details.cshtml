@@ -24,50 +24,33 @@
     <body>
 
 
-<h1>Details</h1>
+<h1>Informações</h1>
+        <div class="col-lg-4 mb-5">
+            <div class="card h-100 shadow border-0">
+                <img class="card-img-top" src="https://dummyimage.com/600x350/ced4da/6c757d" alt="..." />
+                <div class="card-body p-4">
+                    <div class="badge bg-primary bg-gradient rounded-pill mb-4" id="materia">@Html.DisplayFor(model => model.Curso.Materia)</div>
+                    <div class="badge bg-primary bg-gradient rounded-pill mb-2" id="turma">@Html.DisplayFor(model => model.Curso.Turma)</div>
+                    <a class="text-decoration-none link-dark stretched-link">
+                        <h5 class="card-title mb-3" id="name">@Html.DisplayFor(model => model.Curso.Nome)</h5>
+                    </a>
+                    <p class="card-text mb-0" id="descricao">@Html.DisplayFor(model => model.Curso.Descricao)</p>
+                </div>
+                <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
+                    <div class="d-flex align-items-end justify-content-between">
+                        <div class="d-flex align-items-center">
+                            <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d"
+                                 alt="..." />
+                            <div class="small">
+                                <div class="fw-bold" id="proprietario">@Html.DisplayFor(model => model.Curso.Proprietario)</div>
+                                <div class="text-muted" id="date">@Html.DisplayFor(model => model.Curso.DataInicio)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<div>
-    <h4>Curso</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Curso.Nome)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Curso.Nome)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Curso.Materia)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Curso.Materia)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Curso.Descricao)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Curso.Descricao)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Curso.Proprietario)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Curso.Proprietario)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Curso.DataInicio)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Curso.DataInicio)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Curso.Turma)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Curso.Turma)
-        </dd>
-    </dl>
-</div>
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.Curso?.Id">Edit</a> |
     <a asp-page="./Index">Back to List</a>
