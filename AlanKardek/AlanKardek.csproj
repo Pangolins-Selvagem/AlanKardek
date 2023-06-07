@@ -22,6 +22,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Pages\Crud\Create.cshtml.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="Pages\Shared\_Layout2.cshtml" />
   </ItemGroup>
 

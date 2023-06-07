@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using AlanKardek.Models.Father;
@@ -20,11 +16,14 @@ namespace AlanKardek.Pages.Crud
         }
 
         [BindProperty]
-      public Usuario Usuario { get; set; } = default!;
+        public Usuario Usuario { get; set; } = default!;
+        public Usuario Admin { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Usuarios == null)
+            var ID = HttpContext.Session.GetInt32("USUARIO_ID");
+
+            if (id == null || _context.Usuarios == null || ID == null)
             {
                 return NotFound();
             }
@@ -39,6 +38,18 @@ namespace AlanKardek.Pages.Crud
             {
                 Usuario = usuario;
             }
+
+            var admin = await _context.Usuarios.FirstOrDefaultAsync(m => m.Id == ID);
+
+            if (admin == null)
+            {
+                return NotFound();
+
+            } else if (admin.Tipo != "A" &&(admin.Privilegiado != "S"))
+            {
+                return NotFound();
+            }
+            Admin = admin;
             return Page();
         }
 

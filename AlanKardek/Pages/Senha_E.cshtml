@@ -22,7 +22,7 @@
 <body style=" background: #5372F0">
     <div class="wrapper" style="margin-top: 12.5%; margin-bottom: 12.5%; margin-left: 37.2%;">
         <header>Recuperar Senha</header>
-        <form method="post">
+        <form method="post" action="./Senha_S">
             <div class="field email">
                 <div class="input-area">
                     <input type="text" placeholder="Email">
@@ -57,9 +57,11 @@
 
 
                 function checkEmail() {
-                    if (eInput.value == "") {
-                        eField.classList.add("error");
+                    let pattern = /^[^ ]+@@[^ ]+\.[a-z]{2,3}$/;
+                    if (!eInput.value.match(pattern)) {
                         eField.classList.remove("valid");
+                        let errorTxt = eField.querySelector(".error-txt");
+                        (eInput.value != "") ? errorTxt.innerText = "Coloque um email valido" : errorTxt.innerText = "Email não pode estar vazio";
                     } else {
                         eField.classList.remove("error");
                         eField.classList.add("valid");
@@ -67,8 +69,8 @@
                 }
 
 
-                if (!eField.classList.contains("error")) {
-                    window.location.href = form.getAttribute("action");
+                if (!pField.classList.contains("error") && (!cpField.classList.contains("error")) {
+                    window.location.href = form.getAttribute("action") + "?email=" + eInput.value;
                 }
             }
     </script>

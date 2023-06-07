@@ -29,14 +29,35 @@ public class AlunoModel : PageModel
 
 
     public IList<Usuario> Usuario { get; set; } = default!;
+    public Usuario Admin { get; set; } = default!;
 
-    /*public async Task OnGetAsync()
+    public async Task<IActionResult> OnGetAsync()
     {
+        var id = HttpContext.Session.GetInt32("USUARIO_ID");
+
+        var admin = await _context.Usuarios.FirstOrDefaultAsync(m => m.Id == id);
+
         if (_context.Usuarios != null)
         {
             Usuario = await _context.Usuarios.ToListAsync();
         }
-    }*/
+
+        if (admin == null)
+        {
+            return NotFound();
+        }
+        if (admin.Tipo != "P")
+        {
+
+            return NotFound();
+        }
+
+        Admin = admin;
+
+        return Page();
+
+    }
+
 
     [BindProperty]
     public Curso Curso { get; set; } = default!;

@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using AlanKardek.Migrations;
 using AlanKardek.Models;
+using AlanKardek.Models.Father;
+using Microsoft.EntityFrameworkCore;
 
 namespace AlanKardek.Pages.Prof_View
 {
@@ -18,11 +14,30 @@ namespace AlanKardek.Pages.Prof_View
         {
             _context = context;
         }
+        public Usuario Admin { get; set; } = default!;
 
-        public IActionResult OnGet()
+        public async Task<IActionResult> OnGetAsync()
         {
+            var id = HttpContext.Session.GetInt32("USUARIO_ID");
+
+            var admin = await _context.Usuarios.FirstOrDefaultAsync(m => m.Id == id);
+
+            if (admin == null)
+            {
+                return NotFound();
+            }
+            if (admin.Tipo != "P")
+            {
+
+                return NotFound();
+            }
+
+            Admin = admin;
+
             return Page();
+
         }
+
 
         [BindProperty]
         public Curso Curso { get; set; } = default!;

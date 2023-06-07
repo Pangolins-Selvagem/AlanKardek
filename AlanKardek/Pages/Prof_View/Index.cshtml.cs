@@ -20,20 +20,21 @@ namespace AlanKardek.Pages.Prof_View
 
         public async Task<IActionResult> OnGetAsync()
         {
-            var id = HttpContext.Session.GetInt32("USUARIO_ID");
-            var admin = await _context.Usuarios.FirstOrDefaultAsync(m => m.Id == id);
 
             if (_context.Curso != null)
             {
                 Curso = await _context.Curso.ToListAsync();
             }
 
+            var id = HttpContext.Session.GetInt32("USUARIO_ID");
+
+            var admin = await _context.Usuarios.FirstOrDefaultAsync(m => m.Id == id);
+
             if (admin == null)
             {
                 return NotFound();
-            }
 
-            if (admin.Tipo != "P"){
+            } else if (admin.Tipo != "P"){
 
                 return NotFound();
             }
