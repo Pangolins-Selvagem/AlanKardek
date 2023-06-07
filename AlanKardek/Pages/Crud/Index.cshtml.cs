@@ -40,6 +40,11 @@ namespace AlanKardek.Pages.Crud
             {
                 return NotFound();
             }
+            if (admin.Tipo != "A")
+            {
+
+                return NotFound();
+            }
 
             Admin = admin;
 

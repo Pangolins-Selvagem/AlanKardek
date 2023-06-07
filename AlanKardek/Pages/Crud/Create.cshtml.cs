@@ -24,10 +24,6 @@ namespace AlanKardek.Pages.Crud
         public async Task<IActionResult> OnGetAsync()
         {
             var id = HttpContext.Session.GetInt32("USUARIO_ID");
-            if (id == null)
-            {
-                return NotFound();
-            }
 
             var admin = await _context.Usuarios.FirstOrDefaultAsync(m => m.Id == id);
 
