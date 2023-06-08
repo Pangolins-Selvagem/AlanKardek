@@ -22,7 +22,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Controller\ControllerEmail" />
+    <None Remove="Controller\EmailControllerController" />
+    <None Remove="Controller\NewFile.txt" />
     <None Remove="Pages\Crud\Create.cshtml.js" />
+    <None Remove="Pages\NewFile.txt" />
   </ItemGroup>
 
   <ItemGroup>

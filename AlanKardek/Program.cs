@@ -3,9 +3,11 @@ using Microsoft.Extensions.DependencyInjection;
 using AlanKardek.Migrations;
 using Microsoft.Data.SqlClient;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<AlanKardekContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("AlanKardekContext") ?? throw new InvalidOperationException("Connection string 'AlanKardekContext' not found.")));
