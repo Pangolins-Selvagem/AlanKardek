@@ -15,6 +15,8 @@ namespace AlanKardek.Pages.Crud
             _context = context;
         }
         public Usuario Admin { get; set; } = default!;
+        public string? mensagem = null;
+
         public async Task<IActionResult> OnGetAsync()
         {
             var id = HttpContext.Session.GetInt32("USUARIO_ID");
@@ -33,12 +35,28 @@ namespace AlanKardek.Pages.Crud
 
         [BindProperty]
         public Usuario Usuario { get; set; } = default!;
-        
+        public Usuario l { get; set; } = default!;
+
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-          if (!ModelState.IsValid || _context.Usuarios == null || Usuario == null)
+            var id = HttpContext.Session.GetInt32("USUARIO_ID");
+            if(id == null)
+            {
+                return NotFound();
+            }
+
+            var admin = await _context.Usuarios.FirstOrDefaultAsync(m => m.Id == id);
+
+            if (admin == null)
+            {
+                return NotFound();
+            }
+
+            l = admin;
+
+            if (!ModelState.IsValid || _context.Usuarios == null || Usuario == null)
             {
                 return Page();
             }

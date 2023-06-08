@@ -22,7 +22,7 @@
 <body style=" background: #5372F0">
     <div class="wrapper" style="margin-top: 12.5%; margin-bottom: 12.5%; margin-left: 37.2%;">
         <header>Recuperar Senha</header>
-        <form method="post" action="./Senha_S">
+        <form action="./Senha_S">
             <div class="field email">
                 <div class="input-area">
                     <input type="text" placeholder="Email">
@@ -39,10 +39,10 @@
             integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
             crossorigin="anonymous"></script>
 
-    <script type="text/javascript">
+    <script>
         const form = document.querySelector("form");
         eField = form.querySelector(".email"),
-        eInput = eField.querySelector("input"),
+        eInput = eField.querySelector("input");
 
 
             form.onsubmit = (e) => {
@@ -67,11 +67,13 @@
                         eField.classList.add("valid");
                     }
                 }
+                if(!eField.classList.contains("error")){
 
-
-                if (!pField.classList.contains("error") && (!cpField.classList.contains("error")) {
                     window.location.href = form.getAttribute("action") + "?email=" + eInput.value;
+
                 }
+
+
             }
     </script>
 

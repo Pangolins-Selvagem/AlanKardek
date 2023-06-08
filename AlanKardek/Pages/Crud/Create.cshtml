@@ -42,21 +42,23 @@
             </div>
             <div class="form-group field senha">
                 <label asp-for="Usuario.Senha" class="control-label"></label>
-                <input asp-for="Usuario.Senha" class="form-control" />
+                <input asp-for="Usuario.Senha" type="password" class="form-control" />
                 <span asp-validation-for="Usuario.Senha" class="text-danger"></span>
             </div>
+
             <div class="form-group field tipo">
                 <label asp-for="Usuario.Tipo" class="control-label"></label>
-                <input asp-for="Usuario.Tipo" type="password" class="form-control" onkeyup="tipo()" maxlength="1"/>
+                <input asp-for="Usuario.Tipo" class="form-control" onkeyup="tipo()" maxlength="1"/>
                 <span asp-validation-for="Usuario.Tipo" class="text-danger"></span>
-            </div>
+            </div> 
 
             <div class="form-group field privilegiado">
                 <label asp-for="Usuario.Privilegiado" class="control-label"></label>           
                 <input asp-for= "Usuario.Privilegiado" class="form-control" maxlength="1" />
                 <span asp-validation-for="Usuario.Privilegiado" class="text-danger"></span>
             </div>
-            
+
+                
 
             <div class="form-group field turma">
                 <label asp-for="Usuario.Turma" class="control-label"></label>

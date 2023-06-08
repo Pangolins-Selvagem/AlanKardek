@@ -17,7 +17,7 @@ namespace AlanKardek.Pages
 
         [BindProperty]
         public Usuario Usuario { get; set; } = default!;
-        public async Task<IActionResult> OnGetAsync(String email)
+        public async Task<IActionResult> OnGetAsync(String? email)
         {
             if(email == null || _context.Usuarios == null)
             {
