@@ -26,7 +26,10 @@
     <None Remove="Controller\EmailControllerController" />
     <None Remove="Controller\NewFile.txt" />
     <None Remove="Pages\Crud\Create.cshtml.js" />
+    <None Remove="Pages\Index.cshtml.css" />
     <None Remove="Pages\NewFile.txt" />
+    <None Remove="Pages\Senha_E.cshtml.css" />
+    <None Remove="Pages\Senha_S.cshtml.css" />
   </ItemGroup>
 
   <ItemGroup>

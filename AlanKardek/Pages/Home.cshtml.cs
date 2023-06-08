@@ -20,7 +20,7 @@ namespace AlanKardek.Pages
         }
 
         public Usuario? Usuario { get; set; } = null!;
-        public string?  mensagem = null;
+        public string?  Mensagem = null;
 
         public async Task<IActionResult> OnGetAsync(String email, String senha) {
             if (email == "" || senha == "") return NotFound();
@@ -28,11 +28,15 @@ namespace AlanKardek.Pages
             var usuario = await _context.Usuarios.FirstOrDefaultAsync(m => m.Email == email);
 
             if (usuario == null) {
-                mensagem = "usuario nao encontrado.";
+                Mensagem = "Usuário não encontrado!";
+                HttpContext.Session.SetString("MENSAGEM", Mensagem);
+                return RedirectToPage("./Index");
             }
             else {
                 if (usuario.Senha != senha) {
-                    mensagem = "senha invalida.";
+                    Mensagem = "Senha invalida!";
+                    HttpContext.Session.SetString("MENSAGEM", Mensagem);
+                    return RedirectToPage("./Index");
                 }
                 else {
                     Usuario = usuario;

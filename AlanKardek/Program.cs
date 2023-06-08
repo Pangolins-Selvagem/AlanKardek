@@ -1,7 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using AlanKardek.Migrations;
-using Microsoft.Data.SqlClient;
 
 
 var builder = WebApplication.CreateBuilder(args);

@@ -17,6 +17,7 @@ namespace AlanKardek.Pages
 
         [BindProperty]
         public Usuario Usuario { get; set; } = default!;
+        public string? Mensagem { get; set; } = null;
         public async Task<IActionResult> OnGetAsync(String? email)
         {
             if(email == null || _context.Usuarios == null)
@@ -26,7 +27,9 @@ namespace AlanKardek.Pages
             var usuario = await _context.Usuarios.FirstOrDefaultAsync(m => m.Email == email);
             if (usuario == null)
             {
-                return NotFound();
+                Mensagem = "Usuário não encontrado!";
+                HttpContext.Session.SetString("MENSAGEM", Mensagem);
+                return RedirectToPage("./Senha_E");
             }
             Usuario = usuario;
             return Page();
