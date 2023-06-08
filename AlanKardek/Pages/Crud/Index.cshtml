@@ -79,13 +79,13 @@
                                             <table width="40%" class="table table-striped mb-0 table-hover">
                                                 <thead style="background-color: #2485d2; color:white">
                                                     <tr style="font-weight: bold ;">
-                                                        <td scope="col">@Html.DisplayNameFor(model => model.Usuario[0].Id)</td>
                                                         <td scope="col">@Html.DisplayNameFor(model => model.Usuario[0].Nome)</td>
                                                         <td scope="col">@Html.DisplayNameFor(model => model.Usuario[0].Email)</td>
                                                         <td scope="col">@Html.DisplayNameFor(model => model.Usuario[0].Senha)</td>
                                                         <td scope="col">@Html.DisplayNameFor(model => model.Usuario[0].Tipo)</td>
                                                         <td scope="col">@Html.DisplayNameFor(model => model.Usuario[0].Privilegiado)</td>
                                                         <td scope="col">@Html.DisplayNameFor(model => model.Usuario[0].Turma)</td>
+                                                        <td scope="col">@Html.DisplayNameFor(model => model.Usuario[0].Id)</td>
                                                         @if (Model.Admin.Privilegiado == "S")
                                                         {
                                                             <td scope="col">Editar</td>
@@ -99,25 +99,25 @@
                                                 <tbody>
                                                     @foreach (var item in Model.Usuario){
                                                         <tr>
-                                                            <td>@Html.DisplayFor(modelItem => item.Id)</td>
                                                             <td>@Html.DisplayFor(modelItem => item.Nome)</td>
                                                             <td>@Html.DisplayFor(modelItem => item.Email)</td>
                                                             <td>@Html.DisplayFor(modelItem => item.Senha)</td>
                                                             <td>@Html.DisplayFor(modelItem => item.Tipo)</td>
                                                             <td>@Html.DisplayFor(modelItem => item.Privilegiado)</td>
                                                             <td>@Html.DisplayFor(modelItem => item.Turma)</td>
+                                                            <td>@Html.DisplayFor(modelItem => item.Id)</td>
                                                             @if (Model.Admin.Privilegiado == "S")
                                                             {
-                                                                <td><a asp-page="./Edit" asp-route-id="@item.Id">Editar</a></td>
-                                                                <td><a asp-page="./Delete" asp-route-id="@item.Id">Deletar</a></td>
+                                                                <td><a asp-page="./Edit" asp-route-id="@item.Id" style= "text-decoration-line:none">Editar</a></td>
+                                                                <td><a asp-page="./Delete" asp-route-id="@item.Id" style="text-decoration-line:none">Deletar</a></td>
                                                             }
-                                                            <td><a asp-page="./Details" asp-route-id="@item.Id">Informações</a></td>
+                                                            <td><a asp-page="./Details" asp-route-id="@item.Id" style="text-decoration-line:none">Informações</a></td>
                                                     </tr>
                                                     }
                                                 </tbody>
                                             </table>
+                                            <button style="margin-top:10px" class="btn btn-primary" id="btn_1"><a asp-page="./Create" style="color:black; text-decoration-line:none"><b>Criar novo Usuário</b></a></button>
                                             <button style="margin-top:10px" class="btn btn-danger" id="btn_1"><a asp-page="./Sair" style="color:black; text-decoration-line:none"><b>Sair</b></a></button>
-
                                         </div>
                                     </div>
                                 </div>
@@ -129,9 +129,6 @@
 
         </section>
     </main>
-    <a asp-page="./Create" class="nav-link active mx-1" ><b class="link-menu"> Criar novo usuário </b></a>
-    <a asp-page="./Sair" class="nav-link active mx-1" ><b class="link-menu"> Sair </b></a>
-
     <script>
         const searchInput = document.getElementById("search");
         const rows = document.querySelectorAll("tbody tr");
