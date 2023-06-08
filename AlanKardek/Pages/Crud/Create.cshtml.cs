@@ -35,8 +35,6 @@ namespace AlanKardek.Pages.Crud
 
         [BindProperty]
         public Usuario Usuario { get; set; } = default!;
-        public Usuario l { get; set; } = default!;
-
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
@@ -51,10 +49,10 @@ namespace AlanKardek.Pages.Crud
 
             if (admin == null)
             {
-                return NotFound();
+                return Page();
             }
 
-            l = admin;
+            Admin = admin;
 
             if (!ModelState.IsValid || _context.Usuarios == null || Usuario == null)
             {

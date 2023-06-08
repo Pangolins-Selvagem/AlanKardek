@@ -50,19 +50,28 @@
                 <label asp-for="Usuario.Tipo" class="control-label"></label>
                 <input asp-for="Usuario.Tipo" class="form-control" onkeyup="tipo()" maxlength="1"/>
                 <span asp-validation-for="Usuario.Tipo" class="text-danger"></span>
-            </div> 
+            </div>
+                @if (Model.Admin.Privilegiado == "S") { 
 
             <div class="form-group field privilegiado">
                 <label asp-for="Usuario.Privilegiado" class="control-label"></label>           
-                <input asp-for= "Usuario.Privilegiado" class="form-control" maxlength="1" />
+                <input asp-for= "Usuario.Privilegiado" class="form-control" maxlength="1" onkeyup="ck1()" />
                 <span asp-validation-for="Usuario.Privilegiado" class="text-danger"></span>
             </div>
 
-                
+                }
+                @if (Model.Admin.Privilegiado == "N")
+                {
+            <div class="form-group" hidden>
+                <label asp-for="Usuario.Privilegiado" class="control-label"></label>
+                <input asp-for="Usuario.Privilegiado" class="form-control" maxlength="1" value="N" disabled/>
+                <span asp-validation-for="Usuario.Privilegiado" class="text-danger"></span>
+            </div>
+                }
 
             <div class="form-group field turma">
                 <label asp-for="Usuario.Turma" class="control-label"></label>
-                <input asp-for="Usuario.Turma" class="form-control" maxlength="3" />
+                <input asp-for="Usuario.Turma" class="form-control" maxlength="3" onkeyup="ck2()" />
                 <span asp-validation-for="Usuario.Turma" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -99,15 +108,23 @@
         function tipo(){
             if(tiInput.value == "U" || tiInput.value == "P"){
                 pInput.value = "N";
-
                 let tu = tuInput.value.length
                 if (tu === 0 || tu === 1) {
-                    tuInput.value += 'T'
+                    tuInput.value == 'T'
                 }
             }
             if (tiInput.value == "A" || tiInput.value == "P"){
                 tuInput.value = 0;
-
+            }
+        }
+        function ck1(){
+            if (tiInput.value == "U" || tiInput.value == "P") {
+                pInput.value = "N";
+            }
+        }
+        function ck2(){
+            if (tiInput.value == "P" || tiInput.value == "A") {
+                tuInput.value = "0";
             }
         }
 
