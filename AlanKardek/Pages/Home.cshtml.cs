@@ -28,13 +28,13 @@ namespace AlanKardek.Pages
             var usuario = await _context.Usuarios.FirstOrDefaultAsync(m => m.Email == email);
 
             if (usuario == null) {
-                Mensagem = "Usuário não encontrado!";
+                Mensagem = "Usuário ou senha invalidos !";
                 HttpContext.Session.SetString("MENSAGEM", Mensagem);
                 return RedirectToPage("./Index");
             }
             else {
                 if (usuario.Senha != senha) {
-                    Mensagem = "Senha invalida!";
+                    Mensagem = "Usuário ou senha invalidos !";
                     HttpContext.Session.SetString("MENSAGEM", Mensagem);
                     return RedirectToPage("./Index");
                 }

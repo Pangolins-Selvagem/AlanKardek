@@ -17,8 +17,7 @@ namespace AlanKardek.Pages.Prof_View
 
         [BindProperty]
         public Curso Curso { get; set; } = default!;
-        public Usuario Admin
-        { get; set; } = default!;
+        public Usuario Admin { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {

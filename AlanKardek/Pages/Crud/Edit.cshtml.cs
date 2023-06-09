@@ -17,6 +17,7 @@ namespace AlanKardek.Pages.Crud
 
         [BindProperty]
         public Usuario Usuario { get; set; } = default!;
+        public Usuario Admin { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -31,6 +32,18 @@ namespace AlanKardek.Pages.Crud
                 return NotFound();
             }
             Usuario = usuario;
+
+            var ID = HttpContext.Session.GetInt32("USUARIO_ID");
+
+            var admin = await _context.Usuarios.FirstOrDefaultAsync(m => m.Id == ID);
+
+            if (admin == null)
+            {
+                return NotFound();
+            }
+
+            Admin = admin;
+
             return Page();
         }
 
@@ -38,9 +51,20 @@ namespace AlanKardek.Pages.Crud
         // For more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
+            var ID = HttpContext.Session.GetInt32("USUARIO_ID");
+
+            var admin = await _context.Usuarios.FirstOrDefaultAsync(m => m.Id == ID);
+
+            if (admin == null)
+            {
+                return NotFound();
+            }
+
+            Admin = admin;
+
             if (!ModelState.IsValid)
             {
-                return Page();
+                return NotFound();
             }
 
             _context.Attach(Usuario).State = EntityState.Modified;

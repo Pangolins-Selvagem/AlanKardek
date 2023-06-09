@@ -26,6 +26,7 @@
     <div class="wrapper">
         <header>Entrar</header>
         <form action="./Home">
+            <div style="color: #dc3545; text-align: left; margin-top: 5px;">@Model.Mensagem</div>
             <div class="field email">
                 <div class="input-area">
                     <input type="text" placeholder="Email" id="Email">
@@ -33,10 +34,6 @@
                     <i class="error error-icon fas fa-exclamation-circle"></i>
                 </div>
                 <div class="error error-txt">Por favor colocar email!</div>
-                @if (Model.Mensagem == "Usuário não encontrado!")
-                {
-                    <div style="color: #dc3545; text-align: left; margin-top: 5px;">@Model.Mensagem</div>
-                }
             </div>
             <div class="field password">
                 <div class="input-area">
@@ -45,10 +42,6 @@
                     <i class="error error-icon fas fa-exclamation-circle"></i>
                 </div>
                 <div class="error error-txt">Por favor colocar senha!</div>
-                @if (Model.Mensagem == "Senha invalida!")
-                {
-                    <div style="color: #dc3545; text-align: left; margin-top: 5px;">@Model.Mensagem</div>
-                }
             </div>
             <div class="pass-txt"><a href="./Senha_E">Esqueceu a senha?</a></div>
             <input type="submit" value="Login" onclick="entrar()">

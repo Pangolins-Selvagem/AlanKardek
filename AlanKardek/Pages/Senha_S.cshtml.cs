@@ -14,13 +14,16 @@ namespace AlanKardek.Pages
         {
             _context = context;
         }
-
         [BindProperty]
         public Usuario Usuario { get; set; } = default!;
         public string? Mensagem { get; set; } = null;
         public async Task<IActionResult> OnGetAsync(String? email)
         {
-            if(email == null || _context.Usuarios == null)
+            if(email == null)
+            {
+                return NotFound();
+            }
+            if(_context.Usuarios == null)
             {
                 return NotFound();
             }
@@ -34,6 +37,7 @@ namespace AlanKardek.Pages
             Usuario = usuario;
             return Page();
         }
+
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
@@ -49,7 +53,7 @@ namespace AlanKardek.Pages
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UsuarioExists(Usuario.Email))
+                if (!UsuarioExists(Usuario.Id))
                 {
                     return NotFound();
                 }
@@ -59,13 +63,14 @@ namespace AlanKardek.Pages
                 }
             }
 
-            return Redirect("https://localhost:7132");
+            return RedirectToPage("./Index");
         }
 
-        private bool UsuarioExists(string email)
+        private bool UsuarioExists(int id)
         {
-            return (_context.Usuarios?.Any(e => e.Email == email)).GetValueOrDefault();
+            return (_context.Usuarios?.Any(e => e.Id == id)).GetValueOrDefault();
         }
+
 
     }
 }
