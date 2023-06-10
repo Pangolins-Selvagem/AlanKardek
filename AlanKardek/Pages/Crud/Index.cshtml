@@ -83,6 +83,7 @@
                                                         <td scope="col">@Html.DisplayNameFor(model => model.Usuario[0].Tipo)</td>
                                                         <td scope="col">@Html.DisplayNameFor(model => model.Usuario[0].Privilegiado)</td>
                                                         <td scope="col">@Html.DisplayNameFor(model => model.Usuario[0].Turma)</td>
+                                                        <td scope="col">@Html.DisplayNameFor(model => model.Usuario[0].Situacao)</td>
                                                         <td scope="col">@Html.DisplayNameFor(model => model.Usuario[0].Id)</td>
                                                         @if (Model.Admin.Privilegiado == "S")
                                                         {
@@ -103,6 +104,7 @@
                                                             <td>@Html.DisplayFor(modelItem => item.Tipo)</td>
                                                             <td>@Html.DisplayFor(modelItem => item.Privilegiado)</td>
                                                             <td>@Html.DisplayFor(modelItem => item.Turma)</td>
+                                                            <td>@Html.DisplayFor(modelItem => item.Situacao)</td>
                                                             <td>@Html.DisplayFor(modelItem => item.Id)</td>
                                                             @if (Model.Admin.Privilegiado == "S")
                                                             {

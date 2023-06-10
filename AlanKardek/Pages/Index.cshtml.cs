@@ -1,11 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Data.SqlClient;
-using System.Diagnostics.Metrics;
-using System.Drawing;
-using System;
-using Microsoft.Build.Framework;
-using System.ComponentModel.DataAnnotations;  
 
 namespace AlanKardek.Pages
 {

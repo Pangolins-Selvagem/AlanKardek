@@ -11,6 +11,7 @@ namespace AlanKardek.Models.Father
         public string Tipo { get; set; }
         public string Privilegiado { get; set; }
         public string Turma { get; set; }
+        public string Situacao { get; set; }
 
     }
 }

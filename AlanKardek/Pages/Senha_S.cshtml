@@ -31,13 +31,16 @@
             <input type="hidden" asp-for="Usuario.Privilegiado" />
             <input type="hidden" asp-for="Usuario.Tipo" />
 
-
-
-            <div class="form-group field senha">
-                <label asp-for="Usuario.Senha" class="control-label"></label>
-                <input asp-for="Usuario.Senha" type="password" class="form-control" />
-                <span asp-validation-for="Usuario.Senha" class="text-danger"></span>
+            <div class="field password">
+                <div class="input-area">
+                    <input asp-for="Usuario.Senha" type="password" placeholder="Nova Senha">
+                    <i class="icon fas fa-lock"></i>
+                    <i class="error error-icon fas fa-exclamation-circle"></i>
+                </div>
+                <div class="error error-txt">Por favor colocar senha!</div>
+                <div style="color: #dc3545; text-align: left; margin-top: 5px;">@Model.Mensagem</div>
             </div>
+           
             <input type="submit" value="Login">
         </form>
     </div>
@@ -51,38 +54,6 @@
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>
 
-    <script>
-        const form = document.querySelector("form");
-            pField = form.querySelector(".password"),
-            pInput = pField.querySelector("input"),
-
-            
-
-        form.onsubmit = (e) => {
-            e.preventDefault();
-            (pInput.value == "") ? pField.classList.add("shake", "error") : checkPass();
-            (cpInput.value == "" || cpInput.value != pInput.value) ? cpField.classList.add("shake", "error") : checkCpass();
-
-            setTimeout(() => {
-                pField.classList.remove("shake");
-                cpField.classList.remove("shake");
-            }, 500);
-
-            pInput.onkeyup = () => { checkPass(); }
-            cpInput.onkeyup = () => { checkCpass(); }
-
-            function checkPass() {
-                if (pInput.value == "") {
-                    pField.classList.add("error");
-                    pField.classList.remove("valid");
-                } else {
-                    pField.classList.remove("error");
-                    pField.classList.add("valid");
-                }
-            }
-
-        }
-    </script>
 
 </body>
 

@@ -9,7 +9,7 @@ namespace AlanKardek.Pages
 
         public IActionResult OnGet()
         {
-            var mensagem = HttpContext.Session.GetString("MENSAGEM");
+            var mensagem = HttpContext.Session.GetString("MENSAGEMS");
             if (mensagem == null)
             {
 

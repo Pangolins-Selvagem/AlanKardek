@@ -48,6 +48,13 @@ namespace AlanKardek.Data.Mappings
            .HasColumnType("NVARCHAR")
            .HasMaxLength(10);
 
+            builder.Property(x => x.Situacao)
+            .IsRequired()
+            .HasColumnName("tp_sit")
+            .HasColumnType("NVARCHAR")
+            .HasMaxLength(7);
+
+
         }
     }
 }

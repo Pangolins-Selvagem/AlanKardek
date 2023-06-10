@@ -31,7 +31,7 @@ namespace AlanKardek.Pages
             if (usuario == null)
             {
                 Mensagem = "Usuário não encontrado!";
-                HttpContext.Session.SetString("MENSAGEM", Mensagem);
+                HttpContext.Session.SetString("MENSAGEMS", Mensagem);
                 return RedirectToPage("./Senha_E");
             }
             Usuario = usuario;
@@ -42,7 +42,8 @@ namespace AlanKardek.Pages
         {
             if (!ModelState.IsValid)
             {
-                return NotFound();
+                Mensagem = "Por favor colocar uma nova senha !";
+                return Page();
             }
 
             _context.Attach(Usuario).State = EntityState.Modified;

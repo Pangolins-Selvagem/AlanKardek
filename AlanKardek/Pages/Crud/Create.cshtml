@@ -12,77 +12,89 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Entrar</title>
-    <link rel="stylesheet" href="~/AlanKardek.styles.css">
+    <link rel="stylesheet" href="~/css/Index.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css%22%3E"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
 
 </head>
 
 <body>
 
-<h1>Criar novo usuário</h1>
-
-<h4>Usuario</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+    <div class="wrapper">
+        <header>Cadastrar</header>
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Usuario.Situacao" value="Inativo" />
             <div class="form-group field nome">
-                <label asp-for="Usuario.Nome" class="control-label"></label>
-                <input asp-for="Usuario.Nome" class="form-control" />
+                    <div class="input-area">
+                        <input asp-for="Usuario.Nome" type="text" placeholder="Nome" />
+                        <i class="icon bi bi-person-fill"></i>
+                        <i class="error error-icon fas fa-exclamation-circle"></i>
+                    </div>
                 <span asp-validation-for="Usuario.Nome" class="text-danger"></span>
             </div>
             <div class="form-group field email">
-                <label asp-for="Usuario.Email" class="control-label"></label>
-                <input asp-for="Usuario.Email" class="form-control" />
+                    <div class="input-area">
+                    <input asp-for="Usuario.Email" type="text" placeholder="Email" />
+                        <i class="icon fas fa-envelope"></i>
+                        <i class="error error-icon fas fa-exclamation-circle"></i>
+                    </div>
                 <span asp-validation-for="Usuario.Email" class="text-danger"></span>
             </div>
             <div class="form-group field senha">
-                <label asp-for="Usuario.Senha" class="control-label"></label>
-                <input asp-for="Usuario.Senha" type="password" class="form-control" />
+                <div class="input-area">
+                    <input asp-for="Usuario.Senha" type="password" placeholder="Senha" />
+                    <i class="icon fas fa-lock"></i>
+                    <i class="error error-icon fas fa-exclamation-circle"></i>
+                </div>
                 <span asp-validation-for="Usuario.Senha" class="text-danger"></span>
             </div>
 
             <div class="form-group field tipo">
-                <label asp-for="Usuario.Tipo" class="control-label"></label>
-                <input asp-for="Usuario.Tipo" class="form-control" onkeyup="tipo()" maxlength="1"/>
-                <span asp-validation-for="Usuario.Tipo" class="text-danger"></span>
+                <div class="input-area">
+                    <input asp-for="Usuario.Tipo" type="text" onkeyup="tipo()" maxlength="1" placeholder="Tipo" />
+                    <i class="icon bi bi-briefcase-fill"></i>
+                    <i class="error error-icon fas fa-exclamation-circle"></i>
+                </div>
+                <span asp-validation-for="Usuario.Tipo" type class="text-danger"></span>
             </div>
                 @if (Model.Admin.Privilegiado == "S") { 
 
             <div class="form-group field privilegiado">
-                <label asp-for="Usuario.Privilegiado" class="control-label"></label>           
-                <input asp-for= "Usuario.Privilegiado" class="form-control" maxlength="1" onkeyup="ck1()" />
-                <span asp-validation-for="Usuario.Privilegiado" class="text-danger"></span>
-            </div>
+                <div class="input-area">
+                    <input asp-for="Usuario.Privilegiado" type="text" maxlength="1" onkeyup="ck1()" placeholder="Privlegiado" />
+                    <i class="icon bi bi-award"></i>
+                    <i class="error error-icon fas fa-exclamation-circle"></i>
+                </div>
+                    <span asp-validation-for="Usuario.Privilegiado" class="text-danger"></span>
+                </div>
 
                 }
                 @if (Model.Admin.Privilegiado == "N")
                 {
-            <div class="form-group" hidden>
-                <label asp-for="Usuario.Privilegiado" class="control-label"></label>
-                <input asp-for="Usuario.Privilegiado" class="form-control" maxlength="1" value="N" disabled/>
-                <span asp-validation-for="Usuario.Privilegiado" class="text-danger"></span>
-            </div>
+
+                <input asp-for="Usuario.Privilegiado" class="form-control" maxlength="1" value="N" type="hidden" disabled/>
+
                 }
 
             <div class="form-group field turma">
-                <label asp-for="Usuario.Turma" class="control-label"></label>
-                <input asp-for="Usuario.Turma" class="form-control" maxlength="3" onkeyup="ck2()" />
+                <div class="input-area">
+                    <input asp-for="Usuario.Turma" type="text" maxlenght="3" onkeyup="ck2()" placeholder="Turma" />
+                    <i class="icon bi bi-card-list"></i>
+                    <i class="error error-icon fas fa-exclamation-circle"></i>
+                </div>
                 <span asp-validation-for="Usuario.Turma" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input style="margin-top:10px" type="submit" value="Criar" class="btn btn-primary"/>
             </div>
         </form>
+        <button style="margin-top:10px" class="btn btn-danger"><a asp-page="./Index" style="color:black; text-decoration-line:none"><b>Voltar</b></a></button>
     </div>
-</div>
 
 <div>
-        <a asp-page="./Index">Voltar</a>
 </div>
 
 
@@ -109,8 +121,8 @@
             if(tiInput.value == "U" || tiInput.value == "P"){
                 pInput.value = "N";
                 let tu = tuInput.value.length
-                if (tu === 0 || tu === 1) {
-                    tuInput.value == 'T'
+                if (tu == 0 || tu == 1) {
+                    tuInput.value == 'T';
                 }
             }
             if (tiInput.value == "A" || tiInput.value == "P"){

@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -41,7 +40,9 @@ namespace AlanKardek.Migrations
                     tx_senha = table.Column<string>(type: "NVARCHAR(10)", maxLength: 10, nullable: false),
                     tp_usuario = table.Column<string>(type: "NVARCHAR(1)", maxLength: 1, nullable: false),
                     in_privilegiado = table.Column<string>(type: "NVARCHAR(1)", maxLength: 1, nullable: false),
-                    tx_turma = table.Column<string>(type: "NVARCHAR(10)", maxLength: 10, nullable: false)
+                    tx_turma = table.Column<string>(type: "NVARCHAR(10)", maxLength: 10, nullable: false),
+                    tp_sit = table.Column<string>(type: "NVARCHAR(7)", maxLength: 7, nullable: false)
+
                 },
                 constraints: table =>
                 {
