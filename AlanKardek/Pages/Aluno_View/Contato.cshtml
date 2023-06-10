@@ -1,8 +1,6 @@
 ﻿@page
-@model AlanKardek.Pages.Aluno_View.CursosModel
+@model AlanKardek.Pages.Aluno_View.ContatoModel
 @{
-    ViewData["Title"] = "Portal";
-    //Layout = null;
 }
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -39,36 +37,20 @@
         <section class="py-5">
             <div class="container px-5 my-5">
                 <div class="text-center mb-5">
-                    <h1 class="fw-bolder">Cursos</h1>
-                </div>
-                <div class="row gx-5">
-                    @foreach (var item in Model.Curso) {
-                    <div class="col-lg-4 mb-5">
-                        <div class="card h-100 shadow border-0">
-                            <img class="card-img-top" src="https://dummyimage.com/600x350/ced4da/6c757d" alt="..." />
-                            <div class="card-body p-4">
-                                <div class="badge bg-primary bg-gradient rounded-pill mb-2">@item.Materia</div>
-                                <div class="badge bg-primary bg-gradient rounded-pill mb-2">@item.Turma</div>
-                                <a class="text-decoration-none link-dark stretched-link" href="#!">
-                                    <h5 class="card-title mb-3">@item.Nome</h5>
-                                </a>
-                                <p class="card-text mb-0">@item.Descricao</p>
-                            </div>
-                            <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
-                                <div class="d-flex align-items-end justify-content-between">
-                                    <div class="d-flex align-items-center">
-                                        <img class="rounded-circle me-3"
-                                             src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." />
-                                        <div class="small">
-                                            <div class="fw-bold">@item.Proprietario</div>
-                                            <div class="text-muted">@item.DataInicio</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    }
+                    <h1 class="fw-bolder">Formas de Contato</h1>
+                    <p></p>
+
+                    <p style="">
+                        <i class="bi bi-telephone"></i>  Telefone: 55 (11) 2859-4401
+                    </p>
+                    <p>
+                        <i class="bi bi-mailbox"></i>  E-mail: secretaria@iakap.org.br
+                    </p>
+
+                    <p>
+                        <i class="bi bi-map"></i>  Endereço: Rua Ipacaetá, 51; Bairro: Jardim Presidente Dutra; Cidade: Guarulhos Estado: SP
+                    </p>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d49257.03469710999!2d-46.45067464015541!3d-23.422524509356865!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce8a274d20cb75%3A0xf8916fd99776267f!2sR.%20Ipacaeta%2C%2051%20-%20Jardim%20Pres.%20Dutra%2C%20Guarulhos%20-%20SP%2C%2007171-150!5e0!3m2!1spt-BR!2sbr!4v1686360118145!5m2!1spt-BR!2sbr" width="800" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </section>
@@ -81,7 +63,7 @@
                     <div class="small m-0 text-white">Copyright &copy; IAKAP 2023</div>
                 </div>
                 <div class="col-auto">
-                    <a asp-page="./Index" class="link-light small">Inicio</a>
+                    <a asp-page="./Index" class="link-light small" >Inicio</a>
                     <span class="text-white mx-1">&middot;</span>
                     <a asp-page="./Perfil" class="link-light small">Perfil</a>
                     <span class="text-white mx-1">&middot;</span>

@@ -50,7 +50,7 @@
                             <div class="col-xl-24 col-xl-50">
                                 <div class="card user-card-full">
                                     <div class="row m-l-0 m-r-0">
-                                        <div class="col-sm-4 bg-c-lite-green user-profile">
+                                        <div class="col-xl-4 bg-c-lite-green user-profile">
                                             <div class="card-block text-center text-white">
                                                 <div class="m-b-25">
                                                     <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image">
@@ -80,7 +80,7 @@
                                                         <h6 class="text-muted f-w-400">@Html.DisplayFor(model => model.Usuario.Turma)</h6>
                                                     </div>
                                                     <div class="col-sm-6">
-                                                        <button style="margin-top:10px" class="btn btn-primary"><a asp-page="./Editar" asp-route-id="@Model.Usuario?.Id" style="color:black; text-decoration-line:none"><b>Editar</b></a></button>
+                                                        <button style="margin-top:10px" class="btn btn-primary"><a asp-page="./Editar" asp-route-id="@Model.Usuario.Id" style="color:black; text-decoration-line:none"><b>Editar</b></a></button>
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <button style="margin-top:10px" class="btn btn-danger"><a asp-page="./Index" style="color:black; text-decoration-line:none"><b>Voltar</b></a></button>
