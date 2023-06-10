@@ -3,6 +3,10 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using AlanKardek.Models.Father;
 using AlanKardek.Migrations;
+<<<<<<< HEAD
+=======
+
+>>>>>>> b67530e58ae6b6379221ef5319fc269f053d29be
 
 namespace AlanKardek.Pages.Crud
 {

@@ -76,7 +76,7 @@ namespace AlanKardek.Pages
 
                             else
                             {
-                                return RedirectToPage("./Prof_View/Index");
+                                return RedirectToPage("./Prof_View");
                             }
 
 
