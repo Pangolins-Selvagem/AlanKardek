@@ -46,7 +46,23 @@ namespace AlanKardek.Pages.Prof_View
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-          if (!ModelState.IsValid || _context.Curso == null || Curso == null)
+            var id = HttpContext.Session.GetInt32("USUARIO_ID");
+
+            var admin = await _context.Usuarios.FirstOrDefaultAsync(m => m.Id == id);
+
+            if (admin == null)
+            {
+                return NotFound();
+            }
+            if (admin.Tipo != "P")
+            {
+
+                return NotFound();
+            }
+
+            Admin = admin;
+
+            if (!ModelState.IsValid || _context.Curso == null || Curso == null)
             {
                 return Page();
             }

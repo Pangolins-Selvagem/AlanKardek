@@ -118,10 +118,10 @@
 
 
         function tipo(){
-            if(tiInput.value == "U" || tiInput.value == "P"){
+            if(tiInput.value == "U"){
                 pInput.value = "N";
                 let tu = tuInput.value.length
-                if (tu == 0 || tu == 1) {
+                if (tu == 0) {
                     tuInput.value == 'T';
                 }
             }
@@ -130,13 +130,15 @@
             }
         }
         function ck1(){
-            if (tiInput.value == "U" || tiInput.value == "P") {
+            if (tiInput.value == "U") {
                 pInput.value = "N";
             }
         }
         function ck2(){
             if (tiInput.value == "P" || tiInput.value == "A") {
                 tuInput.value = "0";
+            } else if (tuInput.value.length == 0) {
+                 tuInput.value = "T"
             }
         }
 

@@ -49,11 +49,18 @@
                 <input asp-for="Curso.Descricao" class="form-control" onkeyup="desc()"/>
                 <span asp-validation-for="Curso.Descricao" class="text-danger"></span>
             </div>
+            @if (Model.Admin.Privilegiado == "S"){
             <div class="form-group field proprietario">
                 <label asp-for="Curso.Proprietario" class="control-label"></label>
                 <input asp-for="Curso.Proprietario" class="form-control" onkeyup="prop()"/>
                 <span asp-validation-for="Curso.Proprietario" class="text-danger"></span>
             </div>
+            }
+            @if (Model.Admin.Privilegiado == "N"){
+
+                <input asp-for="Curso.Proprietario" class="form-control" type="hidden" value="@Model.Admin.Nome"/>
+
+            }
             <div class="form-group field date">
                 <label asp-for="Curso.DataInicio" class="control-label"></label>
                 <input asp-for="Curso.DataInicio" oninput="this.value = this.value.replace(/[^0-9/]/g, '').replace(/(\..?)\../g, '$1');" class="form-control" maxlength="10" onkeyup="date()" />
@@ -66,6 +73,8 @@
             </div>
             <div class="form-group">
                 <input style="margin-top:10px" type="submit" value="Create" class="btn btn-primary" />
+                <button class="btn btn-danger"><a asp-page="Index">Voltar</a></button>
+
             </div>
         </form>
     </div>
@@ -79,7 +88,7 @@
                         <h5 class="card-title mb-3" id="name">Curso</h5>
                     </a>
                     <p class="card-text mb-0" id="descricao">
-                        Descriççao
+                        Descrição
                     </p>
                 </div>
                 <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
@@ -88,7 +97,14 @@
                             <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d"
                                  alt="..." />
                             <div class="small">
+                                @if(Model.Admin.Privilegiado == "S")
+                                {
                                 <div class="fw-bold" id="proprietario">Professor</div>
+                                }
+                                @if(Model.Admin.Privilegiado == "N")
+                                {
+                                <div class="fw-bold">@Model.Admin.Nome</div>
+                                }
                                 <div class="text-muted" id="date">March 12, 2022</div>
                             </div>
                         </div>
@@ -97,9 +113,6 @@
             </div>
         </div>
     </div>
-<div>
-    <a asp-page="Index">Voltar</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

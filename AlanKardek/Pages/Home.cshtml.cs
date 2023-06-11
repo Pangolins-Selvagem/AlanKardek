@@ -74,9 +74,9 @@ namespace AlanKardek.Pages
                                 return RedirectToPage("./Crud/Index");
                             }
 
-                            else
+                            if ((usuario.Tipo.ToUpper() == "P"))
                             {
-                                return RedirectToPage("./Prof_View");
+                                return RedirectToPage("./Prof_View/Index");
                             }
 
 

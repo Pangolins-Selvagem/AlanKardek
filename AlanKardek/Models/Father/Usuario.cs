@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-
-namespace AlanKardek.Models.Father
+﻿namespace AlanKardek.Models.Father
 {
     public class Usuario
     {
